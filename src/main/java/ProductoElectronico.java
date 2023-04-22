@@ -5,7 +5,7 @@ public class ProductoElectronico {
     public String marca;
     public String modelo;
     public double precio;
-
+   
     public ProductoElectronico(int codigo, String sistemaOperativo, String marca, String modelo, double precio) {
         this.codigo = codigo;
         this.sistemaOperativo = sistemaOperativo;
@@ -40,7 +40,7 @@ public class ProductoElectronico {
 
    // @Override
     public String mostrarProductos() {
-        return marca + " " + modelo + " (" + sistemaOperativo + ") - $" + precio;
+        return "CODIGO: "+codigo+" MARCA: "+marca + "  MODELO: " + modelo + "  SISTEMA O. : (" + sistemaOperativo + ") - PRECIO: $" + precio;
     }
     
    
