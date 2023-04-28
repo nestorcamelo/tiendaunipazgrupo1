@@ -71,8 +71,7 @@ public static int miMetodo(ProductoElectronico[] carrito, int indice) {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-       
-        
+
         ProductoElectronico[] carrito = new ProductoElectronico[6];
         int indice = 0;
        
@@ -93,8 +92,10 @@ public static int miMetodo(ProductoElectronico[] carrito, int indice) {
               }
             iva=subtotal*0.19;
             total = iva + subtotal;
-            ca = Integer.parseInt(JOptionPane.showInputDialog(null,"**CARRITO**\n\n"+result+""
-                    + "IVA: 19%     SUBTOTAL: "+subtotal+"   TOTAL PAGAR: "+String.format("%.1f", total)+""
+            ca = Integer.parseInt(JOptionPane.showInputDialog("**CARRITO**\n\n"
+                   + "--------------------------------------------------------------------------------------------\n\n"+result+""
+                   + "--------------------------------------------------------------------------------------------\n"
+                   + "IVA: 19%     SUBTOTAL: "+subtotal+"   TOTAL PAGAR: "+String.format("%.1f", total)+""
                    + "\n\n\n- Escribe 1 si desea agregar mas productos al carrito.\n"
                    + "- Escribe 2 para proceder con el pago."
                    + "\n- Si desea elimiar un producto del carrito, escribe el codigo del producto."));
