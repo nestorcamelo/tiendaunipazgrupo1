@@ -21,8 +21,9 @@ public static int miMetodo(ProductoElectronico[] carrito, int indice) {
       // ProductoElectronico[] carrito = new ProductoElectronico[6];
             int prod=1;
            // int indice = 0;
+           int indice2=0;
             
-        while(prod!=0){
+        while(prod!=0 || indice<=0){
             prod = Integer.parseInt(JOptionPane.showInputDialog("***CATALOGO***        Carrito["+indice+"]\n"
                     + "\nCELULARES\n"
             +celu[0].mostrarCelulares()+"\n"
@@ -33,10 +34,15 @@ public static int miMetodo(ProductoElectronico[] carrito, int indice) {
             +"\nTELEVISORES\n"
             +tele[0].mostrarTelevisores()+"\n"
             +tele[1].mostrarTelevisores()+"\n"
+                    + "\n***POR FAVOR LEER LAS INDICACIONES***"
             +"\n***ESCRIBE EL CODIGO DEL PRODUCTO QUE DESEA AGREGAR AL CARRITO.***\n"
-                    + "- Si desea ver su carrito escribe el numero 0"));
+                    + "- Si desea ver su carrito escribe el numero 0",0));
         
         
+        if(prod==0 && indice==0){
+            JOptionPane.showMessageDialog(null,"Su carrito esta vacio, por favor agregue productos al carrito.");
+        }
+        indice2=indice;
            
         for (int i = 0; i < celu.length; i++) {
           if (celu[i].getCodigo() == prod) {
@@ -63,6 +69,9 @@ public static int miMetodo(ProductoElectronico[] carrito, int indice) {
               
             }
         }
+        if(indice==indice2 && prod!=0){
+            JOptionPane.showMessageDialog(null,"Producto no encontrado, por favor asegurate de escribir correctamente el CODIGO del producto.");
+        }
        
        }
        
@@ -71,7 +80,15 @@ public static int miMetodo(ProductoElectronico[] carrito, int indice) {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
+        
+        JOptionPane.showMessageDialog(null, "**BIENVENIDO A LA TIENDA UNIPAZ**\n"
+                + "\n Instrucciones:\n"
+                + "\n - Acontinuacion se le mostrara el catalogo de productos"
+                + " con sus respectivos atributos.\n"
+                + "\n - Para agregar un producto al carrito, debera escribir el CODIGO del producto en la caja de texto.\n"
+                + "\n - Si desea ver el carrito debera digitar el numero 0.\n"
+                + "\n - Oprime OK para ver el Catalogo.\n", "TIENDA UNIPAZ", JOptionPane.INFORMATION_MESSAGE, new javax.swing.ImageIcon("paloma.png"));
+        
         ProductoElectronico[] carrito = new ProductoElectronico[6];
         int indice = 0;
        
@@ -99,8 +116,13 @@ public static int miMetodo(ProductoElectronico[] carrito, int indice) {
                    + "\n\n\n- Escribe 1 si desea agregar mas productos al carrito.\n"
                    + "- Escribe 2 para proceder con el pago."
                    + "\n- Si desea elimiar un producto del carrito, escribe el codigo del producto."));
+            if(ca==2 && contador==0){
+                ca=3;
+                JOptionPane.showMessageDialog(null,"Por favor agregue productos al carrito para proceder con el pago.");
+                miMetodo(carrito,contador);
+            }
             
-            if(ca==2){
+            else if(ca==2 && contador!=0){
                 JOptionPane.showMessageDialog(null,"**FACTURA No 7363**\n\n"+result+""
                     + "IVA: 19%     SUBTOTAL: "+subtotal+"   TOTAL PAGAR: "+String.format("%.1f", total)+""
                             + "\n\n ***GRACIAS POR SU COMPRA***");
